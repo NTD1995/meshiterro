@@ -3,8 +3,8 @@ class PostImagesController < ApplicationController
     @post_image = PostImage.new
   end
 
-    # 投稿データの保存
-   def create
+  # 投稿データの保存
+  def create
     @post_image = PostImage.new(post_image_params)
     @post_image.user_id = current_user.id
     if @post_image.save
@@ -26,20 +26,19 @@ class PostImagesController < ApplicationController
   end
 
   def show
-        @post_image = PostImage.find(params[:id]) 
-           @post_comment = PostComment.new
+    @post_image = PostImage.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def destroy
     post_image = PostImage.find(params[:id])
     post_image.destroy
-    redirect_to '/post_images'
+    redirect_to "/post_images"
   end
 
-    # 投稿データのストロングパラメータ
+  # 投稿データのストロングパラメータ
   private
-
-  def post_image_params
-    params.require(:post_image).permit(:shop_name, :image, :caption, :address)
-  end
+    def post_image_params
+      params.require(:post_image).permit(:shop_name, :image, :caption, :address)
+    end
 end
