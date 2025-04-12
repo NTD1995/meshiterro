@@ -1,6 +1,8 @@
-const { environment } = require('@rails/webpacker')
+require("dotenv").config();
 
-module.exports = environment
+const { environment } = require("@rails/webpacker");
+
+module.exports = environment;
 
 const webpack = require("webpack");
 environment.plugins.prepend(
